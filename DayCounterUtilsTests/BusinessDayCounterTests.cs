@@ -16,10 +16,11 @@ namespace DayCounterUtilsTests
         [Fact]
         public void Test1()
         {
-            var firstDate = new DateTime();
-            var secondDate = new DateTime();
+            var firstDate = new DateTime(2013, 10, 7);
+            var secondDate = new DateTime(2013, 10, 9);
             var result = businessDayCounter.WeekdaysBetweenTwoDates(firstDate, secondDate);
 
+            Assert.Equal(1, result);
         }
     }
 }
