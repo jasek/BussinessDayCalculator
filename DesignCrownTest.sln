@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DayCounterUtils", "DayCounterUtils\DayCounterUtils.csproj", "{B9C98A19-9F8E-481A-87FF-CF3B14AE8AA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DayCounterUtilsTests", "DayCounterUtilsTests\DayCounterUtilsTests.csproj", "{CBE41FE2-FB9E-4922-B635-E6462335BCD6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B9C98A19-9F8E-481A-87FF-CF3B14AE8AA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9C98A19-9F8E-481A-87FF-CF3B14AE8AA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9C98A19-9F8E-481A-87FF-CF3B14AE8AA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9C98A19-9F8E-481A-87FF-CF3B14AE8AA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBE41FE2-FB9E-4922-B635-E6462335BCD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBE41FE2-FB9E-4922-B635-E6462335BCD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBE41FE2-FB9E-4922-B635-E6462335BCD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBE41FE2-FB9E-4922-B635-E6462335BCD6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
