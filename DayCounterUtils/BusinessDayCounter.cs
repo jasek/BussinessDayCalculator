@@ -88,18 +88,20 @@ namespace DayCounterUtils
 
             foreach (var rule in holidayRules)
             {
+                DateTime holiday;
                 if (rule.HolidayType == HolidayType.Fixed)
                 {
-                    result.Add(new DateTime(year, rule.Month, rule.Day));
+                    holiday = new DateTime(year, rule.Month, rule.Day);
                 }
                 else if (rule.HolidayType == HolidayType.FixedWithSubstitiute)
                 {
-                    result.Add(GetHolidayWithSubstitute(year, rule.Month, rule.Day));
+                    holiday = GetHolidayWithSubstitute(year, rule.Month, rule.Day);
                 }
                 else
                 {
-                    result.Add(GetNthDay(year, rule.Month, rule.DayOfWeek, rule.Occurence));
+                    holiday = GetNthDay(year, rule.Month, rule.DayOfWeek, rule.Occurence);
                 }
+                result.Add(holiday);
             }
 
             return result;
