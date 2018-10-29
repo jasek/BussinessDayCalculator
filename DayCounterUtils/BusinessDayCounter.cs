@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace DayCounterUtils
@@ -47,7 +48,17 @@ namespace DayCounterUtils
         public int BusinessDaysBetweenTwoDates(DateTime firstDate, DateTime secondDate, IList<DateTime>
        publicHolidays)
         {
-            return 0;
+            var result = WeekdaysBetweenTwoDates(firstDate, secondDate);
+
+            foreach (var holiday in publicHolidays)
+            {
+                if (holiday > firstDate && holiday < secondDate && !weekend.Contains(holiday.DayOfWeek))
+                {
+                    result--;
+                }
+            }
+
+            return result;
         }
     }
 }

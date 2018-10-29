@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using DayCounterUtils;
 using Xunit;
 
@@ -7,7 +8,7 @@ namespace DayCounterUtilsTests
     public class BusinessDayCounterTests
     {
         private readonly BusinessDayCounter businessDayCounter;
-        private readonly DateTime[] publicHolidays = new [] {
+        private readonly IList<DateTime> publicHolidays = new List<DateTime> {
             new DateTime(2013, 12, 25),
             new DateTime(2013, 12, 26),
             new DateTime(2014, 1, 1)
