@@ -13,6 +13,12 @@ namespace DayCounterUtilsTests
             new DateTime(2013, 12, 26),
             new DateTime(2014, 1, 1)
         };
+        private readonly IList<HolidayRule> holidayRules = new List<HolidayRule>
+        {
+            new HolidayRule(25, 4, false),
+            new HolidayRule(1,1, true),
+            new HolidayRule(Order.Second, DayOfWeek.Monday, 6)
+        };
 
         private static DateTime ArrayToDate(int[] dataSet){
             return new DateTime(dataSet[0], dataSet[1], dataSet[2]);

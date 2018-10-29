@@ -60,5 +60,22 @@ namespace DayCounterUtils
 
             return result;
         }
+
+
+        public int BusinessDaysBetweenTwoDates(DateTime firstDate, DateTime secondDate, IList<HolidayRule> holidayRules)
+        {
+            var result = WeekdaysBetweenTwoDates(firstDate, secondDate);
+
+            return result;
+        }
+
+        private static IList<DateTime> GetHolidays(int startYear, int endYear,  IList<HolidayRule> holidayRules){
+            var result = new List<DateTime>();
+
+
+
+
+            return result;
+        }
     }
 }
