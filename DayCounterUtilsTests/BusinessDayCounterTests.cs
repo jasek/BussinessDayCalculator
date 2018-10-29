@@ -8,7 +8,7 @@ namespace DayCounterUtilsTests
     public class BusinessDayCounterTests
     {
         private readonly BusinessDayCounter businessDayCounter;
-        private readonly IList<DateTime> publicHolidays = new List<DateTime> {
+        private readonly static IList<DateTime> publicHolidays = new List<DateTime> {
             new DateTime(2013, 12, 25),
             new DateTime(2013, 12, 26),
             new DateTime(2014, 1, 1)
@@ -51,6 +51,19 @@ namespace DayCounterUtilsTests
             var firstDate = ArrayToDate(firstDataSet);
             var secondDate = ArrayToDate(secondDataSet);
             var result = businessDayCounter.WeekdaysBetweenTwoDates(firstDate, secondDate);
+
+            Assert.Equal(expected, result);
+        }
+
+        [Theory]
+        [InlineData(new[] { 2013, 10, 7 }, new[] { 2013, 10, 9 }, 1)]
+        [InlineData(new[] { 2013, 12, 24 }, new[] { 2013, 12, 27 }, 0)]
+        [InlineData(new[] { 2013, 10, 7 }, new[] { 2014, 1, 1 }, 59)]
+        public void BusinessDaysBetweenTwoDates_ShouldReturnCorrectResult(int[] firstDataSet, int[] secondDataSet, int expected)
+        {
+            var firstDate = ArrayToDate(firstDataSet);
+            var secondDate = ArrayToDate(secondDataSet);
+            var result = businessDayCounter.BusinessDaysBetweenTwoDates(firstDate, secondDate, publicHolidays);
 
             Assert.Equal(expected, result);
         }
