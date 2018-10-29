@@ -20,18 +20,18 @@ namespace DayCounterUtils
                 return 0;
             }
 
-            var result = daysDiff / 7 * 5;
+            var result = daysDiff / 7 * 5 - 1;
 
             var firstDay = firstDate.DayOfWeek;
             var secondDay = secondDate.DayOfWeek;
 
             if (secondDay > firstDay)
             {
-                result += secondDay - firstDay - 1;
+                result += secondDay - firstDay;
             }
             else if (secondDay < firstDay)
             {
-                var reverseDiff = 6 - (firstDay - secondDay);
+                var reverseDiff = 7 - (firstDay - secondDay);
                 if (firstDay < DayOfWeek.Saturday)
                 {
                     reverseDiff--;
