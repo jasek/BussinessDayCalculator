@@ -73,5 +73,16 @@ namespace DayCounterUtilsTests
 
             Assert.Equal(expected, result);
         }
+
+        [Theory]
+        [InlineData(new[] { 2017, 1, 1 }, new[] { 2017, 1, 6 }, 3)]
+        public void BusinessDaysBetweenTwoDates_ShouldWorkWithRules(int[] firstDataSet, int[] secondDataSet, int expected)
+        {
+            var firstDate = ArrayToDate(firstDataSet);
+            var secondDate = ArrayToDate(secondDataSet);
+            var result = businessDayCounter.BusinessDaysBetweenTwoDates(firstDate, secondDate, holidayRules);
+
+            Assert.Equal(expected, result);
+        }
     }
 }
