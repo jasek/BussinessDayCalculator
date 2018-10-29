@@ -17,10 +17,11 @@ namespace DayCounterUtilsTests
         {
             new HolidayRule(25, 4, false),
             new HolidayRule(1,1, true),
-            new HolidayRule(Order.Second, DayOfWeek.Monday, 6)
+            new HolidayRule(Occurence.Second, DayOfWeek.Monday, 6)
         };
 
-        private static DateTime ArrayToDate(int[] dataSet){
+        private static DateTime ArrayToDate(int[] dataSet)
+        {
             return new DateTime(dataSet[0], dataSet[1], dataSet[2]);
         }
 
@@ -76,6 +77,9 @@ namespace DayCounterUtilsTests
 
         [Theory]
         [InlineData(new[] { 2017, 1, 1 }, new[] { 2017, 1, 6 }, 3)]
+        [InlineData(new[] { 2018, 6, 8 }, new[] { 2018, 6, 13 }, 1)]
+        [InlineData(new[] { 2018, 4, 23 }, new[] { 2018, 4, 27 }, 2)]
+        [InlineData(new[] { 2015, 4, 23 }, new[] { 2015, 4, 28 }, 2)]
         public void BusinessDaysBetweenTwoDates_ShouldWorkWithRules(int[] firstDataSet, int[] secondDataSet, int expected)
         {
             var firstDate = ArrayToDate(firstDataSet);

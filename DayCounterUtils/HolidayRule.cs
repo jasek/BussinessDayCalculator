@@ -3,9 +3,9 @@ namespace DayCounterUtils
 {
     public class HolidayRule
     {
-        public HolidayRule(Order order, DayOfWeek dayOfWeek, int month)
+        public HolidayRule(Occurence occurence, DayOfWeek dayOfWeek, int month)
         {
-            Order = order;
+            Occurence = occurence;
             DayOfWeek = dayOfWeek;
             Month = month;
             HolidayType = HolidayType.Dynamic;
@@ -42,7 +42,7 @@ namespace DayCounterUtils
             internal set;
         }
 
-        public Order Order
+        public Occurence Occurence
         {
             get;
             internal set;

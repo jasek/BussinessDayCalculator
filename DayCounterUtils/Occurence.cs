@@ -1,12 +1,11 @@
 ﻿using System;
 namespace DayCounterUtils
 {
-    public enum Order
+    public enum Occurence
     {
         First,
         Second,
         Third,
-        Fourth,
-        Last
+        Fourth
     }
 }
