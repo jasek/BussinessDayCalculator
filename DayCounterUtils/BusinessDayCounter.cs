@@ -74,10 +74,8 @@ namespace DayCounterUtils
         {
             var result = new List<DateTime>();
 
-
             for (int i = startYear; i <= endYear; i++)
             {
-
                 result.AddRange(GetHolidays(i, holidayRules));
             }
 
@@ -96,16 +94,7 @@ namespace DayCounterUtils
                 }
                 else if (rule.HolidayType == HolidayType.FixedWithSubstitiute)
                 {
-                    var date = new DateTime(year, rule.Month, rule.Day);
-                    if (date.DayOfWeek == DayOfWeek.Saturday)
-                    {
-                        date = date.AddDays(2);
-                    }
-                    else if (date.DayOfWeek == DayOfWeek.Sunday)
-                    {
-                        date = date.AddDays(1);
-                    }
-                    result.Add(date);
+                    result.Add(GetHolidayWithSubstitute(year, rule.Month, rule.Day));
                 }
                 else
                 {
@@ -114,6 +103,20 @@ namespace DayCounterUtils
             }
 
             return result;
+        }
+
+        private static DateTime GetHolidayWithSubstitute(int year, int month, int day)
+        {
+            var date = new DateTime(year, month, day);
+            if (date.DayOfWeek == DayOfWeek.Saturday)
+            {
+                date = date.AddDays(2);
+            }
+            else if (date.DayOfWeek == DayOfWeek.Sunday)
+            {
+                date = date.AddDays(1);
+            }
+            return date;
         }
 
         private static DateTime GetNthDay(int year, int month, DayOfWeek dayOfWeek, Occurence occurence)

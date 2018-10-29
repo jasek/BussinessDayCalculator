@@ -80,6 +80,7 @@ namespace DayCounterUtilsTests
         [InlineData(new[] { 2018, 6, 8 }, new[] { 2018, 6, 13 }, 1)]
         [InlineData(new[] { 2018, 4, 23 }, new[] { 2018, 4, 27 }, 2)]
         [InlineData(new[] { 2015, 4, 23 }, new[] { 2015, 4, 28 }, 2)]
+        [InlineData(new[] { 2014, 12, 31 }, new[] { 2015, 1, 5 }, 1)]
         public void BusinessDaysBetweenTwoDates_ShouldWorkWithRules(int[] firstDataSet, int[] secondDataSet, int expected)
         {
             var firstDate = ArrayToDate(firstDataSet);
