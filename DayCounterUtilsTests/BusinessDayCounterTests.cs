@@ -7,6 +7,15 @@ namespace DayCounterUtilsTests
     public class BusinessDayCounterTests
     {
         private readonly BusinessDayCounter businessDayCounter;
+        private readonly DateTime[] publicHolidays = new [] {
+            new DateTime(2013, 12, 25),
+            new DateTime(2013, 12, 26),
+            new DateTime(2014, 1, 1)
+        };
+
+        private static DateTime ArrayToDate(int[] dataSet){
+            return new DateTime(dataSet[0], dataSet[1], dataSet[2]);
+        }
 
         public BusinessDayCounterTests()
         {
@@ -26,8 +35,8 @@ namespace DayCounterUtilsTests
         [InlineData(new[] { 2018, 10, 19 }, new[] { 2018, 10, 26 }, 4)]
         public void WeekdaysBetweenTwoDates_ShouldReturnGoodValueForCorrectData(int[] firstDataSet, int[] secondDataSet, int expected)
         {
-            var firstDate = new DateTime(firstDataSet[0], firstDataSet[1], firstDataSet[2]);
-            var secondDate = new DateTime(secondDataSet[0], secondDataSet[1], secondDataSet[2]);
+            var firstDate = ArrayToDate(firstDataSet);
+            var secondDate = ArrayToDate(secondDataSet);
             var result = businessDayCounter.WeekdaysBetweenTwoDates(firstDate, secondDate);
 
             Assert.Equal(expected, result);
@@ -38,8 +47,8 @@ namespace DayCounterUtilsTests
         [InlineData(new[] { 2013, 10, 7 }, new[] { 2012, 10, 7 }, 0)]
         public void WeekdaysBetweenTwoDates_ShouldReturnZeroIfEqualOrBefore(int[] firstDataSet, int[] secondDataSet, int expected)
         {
-            var firstDate = new DateTime(firstDataSet[0], firstDataSet[1], firstDataSet[2]);
-            var secondDate = new DateTime(secondDataSet[0], secondDataSet[1], secondDataSet[2]);
+            var firstDate = ArrayToDate(firstDataSet);
+            var secondDate = ArrayToDate(secondDataSet);
             var result = businessDayCounter.WeekdaysBetweenTwoDates(firstDate, secondDate);
 
             Assert.Equal(expected, result);
