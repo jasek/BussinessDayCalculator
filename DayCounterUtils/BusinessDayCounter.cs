@@ -16,12 +16,33 @@ namespace DayCounterUtils
 
             if (daysDiff <= 1)
             {
+
                 return 0;
             }
 
+            var result = daysDiff / 7 * 5;
 
-            var span = secondDate - firstDate;
-            var result = span.Days - 1;
+            var firstDay = firstDate.DayOfWeek;
+            var secondDay = secondDate.DayOfWeek;
+
+            if (secondDay > firstDay)
+            {
+                result += secondDay - firstDay - 1;
+            }
+            else if (secondDay < firstDay)
+            {
+                var reverseDiff = 6 - (firstDay - secondDay);
+                if (firstDay < DayOfWeek.Saturday)
+                {
+                    reverseDiff--;
+                }
+                if (secondDay > DayOfWeek.Sunday)
+                {
+                    reverseDiff--;
+                }
+                result += reverseDiff;
+            }
+
             return result;
         }
         public int BusinessDaysBetweenTwoDates(DateTime firstDate, DateTime secondDate, IList<DateTime>
