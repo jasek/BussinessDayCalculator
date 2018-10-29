@@ -11,7 +11,6 @@ namespace DayCounterUtils
         {
             firstDate = firstDate.Date;
             secondDate = secondDate.Date;
-
             var daysDiff = (secondDate - firstDate).Days;
 
             if (daysDiff <= 1)
@@ -21,7 +20,6 @@ namespace DayCounterUtils
             }
 
             var result = daysDiff / 7 * 5 - 1;
-
             var firstDay = firstDate.DayOfWeek;
             var secondDay = secondDate.DayOfWeek;
 
@@ -45,6 +43,7 @@ namespace DayCounterUtils
 
             return result;
         }
+
         public int BusinessDaysBetweenTwoDates(DateTime firstDate, DateTime secondDate, IList<DateTime>
        publicHolidays)
         {
