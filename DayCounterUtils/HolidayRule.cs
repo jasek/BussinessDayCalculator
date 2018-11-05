@@ -15,37 +15,32 @@ namespace DayCounterUtils
         {
             Day = day;
             Month = month;
-            HolidayType = withSubstitute ? HolidayType.FixedWithSubstitiute : HolidayType.Fixed;
+            HolidayType = withSubstitute ? HolidayType.FixedWithSubstitute : HolidayType.Fixed;
         }
 
         public HolidayType HolidayType
         {
             get;
-            internal set;
         }
 
         public int Month
         {
             get;
-            internal set;
         }
 
         public int Day
         {
             get;
-            internal set;
         }
 
         public DayOfWeek DayOfWeek
         {
             get;
-            internal set;
         }
 
         public Occurence Occurence
         {
             get;
-            internal set;
         }
     }
 }

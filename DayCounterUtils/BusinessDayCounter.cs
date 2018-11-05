@@ -6,7 +6,7 @@ namespace DayCounterUtils
 {
     public class BusinessDayCounter
     {
-        private static readonly DayOfWeek[] weekend = { DayOfWeek.Saturday, DayOfWeek.Sunday };
+        private static readonly DayOfWeek[] Weekend = { DayOfWeek.Saturday, DayOfWeek.Sunday };
 
         public int WeekdaysBetweenTwoDates(DateTime firstDate, DateTime secondDate)
         {
@@ -52,7 +52,7 @@ namespace DayCounterUtils
 
             foreach (var holiday in publicHolidays)
             {
-                if (holiday > firstDate && holiday < secondDate && !weekend.Contains(holiday.DayOfWeek))
+                if (holiday > firstDate && holiday < secondDate && !Weekend.Contains(holiday.DayOfWeek))
                 {
                     result--;
                 }
@@ -74,7 +74,7 @@ namespace DayCounterUtils
         {
             var result = new List<DateTime>();
 
-            for (int i = startYear; i <= endYear; i++)
+            for (var i = startYear; i <= endYear; i++)
             {
                 result.AddRange(GetHolidays(i, holidayRules));
             }
@@ -89,17 +89,19 @@ namespace DayCounterUtils
             foreach (var rule in holidayRules)
             {
                 DateTime holiday;
-                if (rule.HolidayType == HolidayType.Fixed)
+                switch (rule.HolidayType)
                 {
-                    holiday = new DateTime(year, rule.Month, rule.Day);
-                }
-                else if (rule.HolidayType == HolidayType.FixedWithSubstitiute)
-                {
-                    holiday = GetHolidayWithSubstitute(year, rule.Month, rule.Day);
-                }
-                else
-                {
-                    holiday = GetNthDay(year, rule.Month, rule.DayOfWeek, rule.Occurence);
+                    case HolidayType.Fixed:
+                        holiday = new DateTime(year, rule.Month, rule.Day);
+                        break;
+                    case HolidayType.FixedWithSubstitute:
+                        holiday = GetHolidayWithSubstitute(year, rule.Month, rule.Day);
+                        break;
+                    case HolidayType.Dynamic:
+                        holiday = GetNthDay(year, rule.Month, rule.DayOfWeek, rule.Occurence);
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
                 }
                 result.Add(holiday);
             }

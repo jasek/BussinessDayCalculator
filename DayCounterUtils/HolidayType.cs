@@ -3,7 +3,7 @@
     public enum HolidayType
     {
         Fixed,
-        FixedWithSubstitiute,
+        FixedWithSubstitute,
         Dynamic
     }
 }
